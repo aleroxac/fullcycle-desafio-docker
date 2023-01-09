@@ -36,7 +36,7 @@ Implementação do desafio do módulo de Docker do Curso Full Cycle 3.0 ministra
 - [x] Publicar a imagem no Dockerhub usando o padrão `<meu-usuario-do-dockerhub>/fullcycle`
 
 
-## Estrutura de diretórios do "Desafio Docker"
+## Estrutura de diretórios
 ```
 ├── Dockerfile
 ├── go.mod
@@ -81,7 +81,7 @@ docker run aleroxac/fullcycle:desafio-docker-go
     - [x] Adicionar um service no docker-compose.yaml para o nginx
 
 
-## Estrutura de diretórios do "Desafio Docker"
+## Estrutura de diretórios
 ```
 └── src
     ├── db

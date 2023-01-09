@@ -1,4 +1,4 @@
-FROM node:19.4.0-alpine3.17 AS base
+FROM node:18.13.0-alpine3.17 AS base
 
 
 ARG NODE_ENV=production
@@ -16,7 +16,11 @@ RUN npm install --production && \
 FROM gcr.io/distroless/nodejs18-debian11:latest as main
 WORKDIR /app
 COPY --from=build /build/ /app/
-COPY index.js /app
+COPY *.js /app
 
 CMD [ "index.js" ]
 EXPOSE 8080
+HEALTHCHECK \
+    --interval=5s \
+    --retries=6 \
+    CMD [ "/nodejs/bin/node", "healthz.js" ]

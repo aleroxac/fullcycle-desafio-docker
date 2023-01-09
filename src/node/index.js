@@ -12,12 +12,18 @@ const { createConnection } = require('net')
 const connection = database.createConnection(db_config)
 
 
+app.get('/healthz', (req, res) => {
+    res.send({status: 'OK'});
+})
+
+
 app.get('/people', (req, res) => {
     connection.query('SELECT * FROM people', function (error, results) {
         if (error) throw error;
         res.send(results.map(item => ({ id: item.people_id, name: item.people_name })));
     });
 })
+
 
 app.get('/people/:name', (req, res) => {
     connection.query(`INSERT INTO people(people_name) VALUES ("${req.params.name}")`, function(err, result){
@@ -37,6 +43,7 @@ app.get('/people/:name', (req, res) => {
         res.send(html);
     });
 })
+
 
 app.listen(port, () => {
     console.log('Rodando na porta ' + port)
